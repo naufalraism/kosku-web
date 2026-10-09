@@ -1,6 +1,6 @@
 # KosKu Web
 
-React + TypeScript frontend for the [KosKu API](https://github.com/YOUR-USERNAME/kosku-api), a boarding-house (kost) management system.
+React + TypeScript frontend for the [KosKu API](https://github.com/naufalraism/Kosku), a boarding-house (kost) management system.
 
 **Stack:** React, TypeScript, Vite, Mantine, React Router.
 
