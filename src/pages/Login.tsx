@@ -1,4 +1,4 @@
-import { Button, Center, Paper, PasswordInput, Stack, Text, TextInput, Title } from '@mantine/core';
+import { Alert, Button, Center, Paper, PasswordInput, Stack, Text, TextInput, Title } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { useState } from 'react';
 import { Navigate } from 'react-router-dom';
@@ -43,9 +43,9 @@ export function Login() {
               </Text>
             </div>
             {isDemo && (
-              <Text size="sm" c="dimmed">
-                Demo mode: the credentials are pre-filled. Just press Sign in.
-              </Text>
+              <Alert color="yellow" variant="light" title="Demo mode">
+                Sample data stored only in your browser. The credentials are pre-filled, just press Sign in.
+              </Alert>
             )}
             <TextInput label="Email" placeholder="admin@example.com" {...form.getInputProps('email')} />
             <PasswordInput label="Password" {...form.getInputProps('password')} />
