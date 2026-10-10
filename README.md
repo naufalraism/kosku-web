@@ -11,7 +11,9 @@ The demo runs entirely in your browser on sample data; no backend is called. The
 ## Screenshots
  
 <p align="center">
-  <img src="docs/dashboard.png" alt="Dashboard with monthly summary and overdue invoices" width="49%">
+  <img src="docs/dashboard.png" alt="Dashboard with monthly summary cards and overdue invoices" width="49%">
+  <img src="docs/rooms.png" alt="Rooms page listing each room with its monthly price and availability status" width="49%">
+  <img src="docs/tenants.png" alt="Tenants page listing tenants with their room, move-in date and lease end" width="49%">
   <img src="docs/invoices.png" alt="Invoices page with generate and mark-as-paid actions" width="49%">
 </p>
 ## Features
