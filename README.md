@@ -4,7 +4,7 @@
  
 React + TypeScript frontend for [KosKu API](https://github.com/naufalraism/kosku-api), a boarding-house (kost) management system: rooms, tenants, monthly invoices, and a dashboard with overdue payments.
  
-**Live demo:** https://kosku-web.naufal-majid.workers.dev
+**Live demo:** https://https://https//kosku-web.naufalraism.workers.dev/
  
 The demo runs entirely in your browser on sample data; no backend is called. The login is pre-filled, so just press *Sign in*. Use *Reset demo data* in the banner to start over.
  
