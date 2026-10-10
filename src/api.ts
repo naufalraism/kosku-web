@@ -1,5 +1,13 @@
+import { demoRequest } from './demo/demoApi';
+import { ApiError } from './errors';
+
+export { ApiError };
+
 const BASE_URL: string = import.meta.env.VITE_API_URL ?? 'http://localhost:3000';
 const TOKEN_KEY = 'kosku_token';
+
+/** When true, the app talks to an in-browser fake API with sample data instead of the real backend. */
+export const isDemo: boolean = import.meta.env.VITE_DEMO === 'true';
 
 // Note: localStorage is fine for a portfolio demo. For a real product, prefer
 // httpOnly cookies, which scripts injected into the page cannot read.
@@ -9,21 +17,14 @@ export const tokenStore = {
   clear: () => localStorage.removeItem(TOKEN_KEY),
 };
 
-export class ApiError extends Error {
-  status: number;
-
-  constructor(status: number, message: string) {
-    super(message);
-    this.status = status;
-  }
-}
-
 interface RequestOptions {
   method?: string;
   body?: unknown;
 }
 
 export async function api<T>(path: string, options: RequestOptions = {}): Promise<T> {
+  if (isDemo) return demoRequest<T>(path, options);
+
   const token = tokenStore.get();
   const headers: Record<string, string> = {};
   if (options.body !== undefined) headers['Content-Type'] = 'application/json';
