@@ -14,6 +14,8 @@ cp .env.example .env
 npm install
 npm run dev        # http://localhost:5173
 ```
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/c47081aa-07ff-41a1-8c24-b103589edfa2" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/52ae8139-945d-4868-a612-7b22d8148a52" />
 
 ## Status
 
