@@ -2,7 +2,12 @@ import { Button, Container, Group, Title } from '@mantine/core';
 import { NavLink, Outlet } from 'react-router-dom';
 import { useAuth } from '../auth';
 
-const links = [{ to: '/rooms', label: 'Rooms' }];
+const links = [
+  { to: '/dashboard', label: 'Dashboard' },
+  { to: '/rooms', label: 'Rooms' },
+  { to: '/tenants', label: 'Tenants' },
+  { to: '/invoices', label: 'Invoices' },
+];
 
 export function Layout() {
   const { logout } = useAuth();
