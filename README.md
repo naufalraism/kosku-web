@@ -4,7 +4,7 @@
  
 React + TypeScript frontend for [KosKu API](https://github.com/naufalraism/kosku-api), a boarding-house (kost) management system: rooms, tenants, monthly invoices, and a dashboard with overdue payments.
  
-**Live demo:** https//kosku-web.naufalraism.workers.dev/
+**Live demo:** [https://kosku-web.naufalraism.workers.dev](https://kosku-web.naufalraism.workers.dev)
  
 The demo runs entirely in your browser on sample data; no backend is called. The login is pre-filled, so just press *Sign in*. Use *Reset demo data* in the banner to start over.
  
@@ -16,6 +16,7 @@ The demo runs entirely in your browser on sample data; no backend is called. The
   <img src="docs/tenants.png" alt="Tenants page listing tenants with their room, move-in date and lease end" width="49%">
   <img src="docs/invoices.png" alt="Invoices page with generate and mark-as-paid actions" width="49%">
 </p>
+
 ## Features
  
 - Login (JWT when connected to the real API)
@@ -24,6 +25,7 @@ The demo runs entirely in your browser on sample data; no backend is called. The
 - Invoices: generate per month, filter by status, mark as paid, overdue highlighting
 - Dashboard: billed, collected and outstanding totals, occupancy, overdue list
 - Demo mode: the whole app runs on sample data with no backend
+
 ## Tech stack
  
 React, TypeScript, Vite, Mantine, React Router. Served as static assets on Cloudflare Workers. CI with GitHub Actions.
@@ -40,8 +42,9 @@ npm run dev              # http://localhost:5173
  
 **With the real API**
  
-1. Start the API (see the [kosku-api README](https://github.com/naufalraism/kosku-api)) so it listens on http://localhost:3000.
+1. Start the API (see the [kosku-api README](...)) so it listens on http://localhost:3000.
 2. Keep `VITE_DEMO=false` in `.env`, then run `npm install` and `npm run dev`.
+
 On Windows PowerShell, use `Copy-Item .env.example .env` instead of `cp`.
  
 ## Environment variables
