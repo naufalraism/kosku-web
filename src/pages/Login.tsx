@@ -2,6 +2,7 @@ import { Button, Center, Paper, PasswordInput, Stack, Text, TextInput, Title } f
 import { useForm } from '@mantine/form';
 import { useState } from 'react';
 import { Navigate } from 'react-router-dom';
+import { isDemo } from '../api';
 import { useAuth } from '../auth';
 import { showError } from '../notify';
 
@@ -10,7 +11,7 @@ export function Login() {
   const [loading, setLoading] = useState(false);
 
   const form = useForm({
-    initialValues: { email: '', password: '' },
+    initialValues: isDemo ? { email: 'demo@kosku.app', password: 'demo12345' } : { email: '', password: '' },
     validate: {
       email: (value) => (/^\S+@\S+\.\S+$/.test(value) ? null : 'Enter a valid email'),
       password: (value) => (value.length >= 8 ? null : 'At least 8 characters'),
@@ -41,6 +42,11 @@ export function Login() {
                 Sign in to manage your boarding house
               </Text>
             </div>
+            {isDemo && (
+              <Text size="sm" c="dimmed">
+                Demo mode: the credentials are pre-filled. Just press Sign in.
+              </Text>
+            )}
             <TextInput label="Email" placeholder="admin@example.com" {...form.getInputProps('email')} />
             <PasswordInput label="Password" {...form.getInputProps('password')} />
             <Button type="submit" loading={loading}>
