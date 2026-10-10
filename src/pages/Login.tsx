@@ -17,7 +17,7 @@ export function Login() {
     },
   });
 
-  if (isAuthenticated) return <Navigate to="/rooms" replace />;
+  if (isAuthenticated) return <Navigate to="/dashboard" replace />;
 
   async function handleSubmit(values: { email: string; password: string }) {
     setLoading(true);
