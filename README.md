@@ -1,3 +1,8 @@
+**Live demo:** https://kosku-web.naufal-majid.workers.dev
+Runs entirely in your browser on sample data; no backend is called.
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/6db9f9dd-8e38-48cd-832a-eaea10e8f2b0" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/ba576888-1f9e-4206-a447-a05d4573a09e" />
+
 # KosKu Web
 
 React + TypeScript frontend for the [KosKu API](https://github.com/naufalraism/Kosku), a boarding-house (kost) management system.
