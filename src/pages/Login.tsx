@@ -1,17 +1,17 @@
-import { Alert, Button, Center, Paper, PasswordInput, Stack, Text, TextInput, Title } from '@mantine/core';
+import { Alert, Button, Center, Divider, Paper, PasswordInput, Stack, Text, TextInput, Title } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { useState } from 'react';
 import { Navigate } from 'react-router-dom';
-import { isDemo } from '../api';
 import { useAuth } from '../auth';
+import { demoForced } from '../mode';
 import { showError } from '../notify';
 
 export function Login() {
-  const { isAuthenticated, login } = useAuth();
+  const { isAuthenticated, login, startDemo } = useAuth();
   const [loading, setLoading] = useState(false);
 
   const form = useForm({
-    initialValues: isDemo ? { email: 'demo@kosku.app', password: 'demo12345' } : { email: '', password: '' },
+    initialValues: demoForced ? { email: 'demo@kosku.app', password: 'demo12345' } : { email: '', password: '' },
     validate: {
       email: (value) => (/^\S+@\S+\.\S+$/.test(value) ? null : 'Enter a valid email'),
       password: (value) => (value.length >= 8 ? null : 'At least 8 characters'),
@@ -42,16 +42,27 @@ export function Login() {
                 Sign in to manage your boarding house
               </Text>
             </div>
-            {isDemo && (
+            {demoForced && (
               <Alert color="yellow" variant="light" title="Demo mode">
                 Sample data stored only in your browser. The credentials are pre-filled, just press Sign in.
               </Alert>
             )}
-            <TextInput label="Email" placeholder="admin@example.com" {...form.getInputProps('email')} />
+            <TextInput label="Email" placeholder="owner@example.com" {...form.getInputProps('email')} />
             <PasswordInput label="Password" {...form.getInputProps('password')} />
             <Button type="submit" loading={loading}>
               Sign in
             </Button>
+            {!demoForced && (
+              <>
+                <Divider label="or" labelPosition="center" />
+                <Button variant="default" onClick={startDemo} disabled={loading}>
+                  Try the demo
+                </Button>
+                <Text size="xs" c="dimmed" ta="center">
+                  The demo uses sample data that stays in your browser. No account needed.
+                </Text>
+              </>
+            )}
           </Stack>
         </form>
       </Paper>
