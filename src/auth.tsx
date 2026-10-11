@@ -1,19 +1,30 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import type { ReactNode } from 'react';
 import { api, tokenStore } from './api';
+import { clearMode, demoForced, getMode, setMode } from './mode';
 
 interface AuthState {
   isAuthenticated: boolean;
   login: (email: string, password: string) => Promise<void>;
+  startDemo: () => void;
   logout: () => void;
+}
+
+const DEMO_TOKEN = 'demo-session';
+
+function initialToken(): string | null {
+  const stored = tokenStore.get();
+  if (demoForced) return stored;
+  return getMode() === 'demo' ? DEMO_TOKEN : stored;
 }
 
 const AuthContext = createContext<AuthState | null>(null);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const [token, setToken] = useState<string | null>(tokenStore.get());
+  const [token, setToken] = useState<string | null>(initialToken);
 
   const login = useCallback(async (email: string, password: string) => {
+    setMode(demoForced ? 'demo' : 'live');
     const { accessToken } = await api<{ accessToken: string }>('/auth/login', {
       method: 'POST',
       body: { email, password },
@@ -22,8 +33,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setToken(accessToken);
   }, []);
 
+  // Demo: sample data that stays in this browser; nothing is sent to the server.
+  const startDemo = useCallback(() => {
+    setMode('demo');
+    setToken(DEMO_TOKEN);
+  }, []);
+
   const logout = useCallback(() => {
     tokenStore.clear();
+    clearMode();
     setToken(null);
   }, []);
 
@@ -35,8 +53,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const value = useMemo(
-    () => ({ isAuthenticated: token !== null, login, logout }),
-    [token, login, logout],
+    () => ({ isAuthenticated: token !== null, login, startDemo, logout }),
+    [token, login, startDemo, logout],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

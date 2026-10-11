@@ -1,8 +1,8 @@
 import { Alert, Anchor, Button, Container, Group, Title } from '@mantine/core';
 import { NavLink, Outlet } from 'react-router-dom';
-import { isDemo } from '../api';
 import { useAuth } from '../auth';
 import { resetDemo } from '../demo/demoApi';
+import { getMode } from '../mode';
 
 const links = [
   { to: '/dashboard', label: 'Dashboard' },
@@ -13,6 +13,7 @@ const links = [
 
 export function Layout() {
   const { logout } = useAuth();
+  const isDemo = getMode() === 'demo';
 
   function handleReset() {
     resetDemo();
