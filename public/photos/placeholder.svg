@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Foto kamar menyusul">
+  <rect width="800" height="600" fill="#e4ecec"/>
+  <rect x="0" y="430" width="800" height="170" fill="#cfdcdc"/>
+  <rect x="120" y="290" width="330" height="110" rx="10" fill="#ffffff"/>
+  <rect x="120" y="250" width="110" height="60" rx="10" fill="#1f6f78"/>
+  <rect x="110" y="400" width="14" height="50" fill="#6b7c80"/>
+  <rect x="446" y="400" width="14" height="50" fill="#6b7c80"/>
+  <rect x="540" y="300" width="170" height="14" rx="4" fill="#6b7c80"/>
+  <rect x="552" y="314" width="10" height="136" fill="#6b7c80"/>
+  <rect x="688" y="314" width="10" height="136" fill="#6b7c80"/>
+  <rect x="590" y="250" width="70" height="50" rx="4" fill="#e3a72f"/>
+  <text x="400" y="525" text-anchor="middle" font-family="system-ui, sans-serif" font-size="30" fill="#1b2a2e">Foto kamar menyusul</text>
+</svg>
